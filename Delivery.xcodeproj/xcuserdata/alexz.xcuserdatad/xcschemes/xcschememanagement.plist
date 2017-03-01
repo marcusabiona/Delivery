@@ -4,15 +4,60 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Delivery.xcscheme</key>
+		<key>Delivery-iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>Delivery-macOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Delivery-tvOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>Delivery-watchOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>DeliveryTests-iOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>6BFA90641E6770040066AC95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BFA90741E67709A0066AC95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BFA90811E6770A80066AC95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BFA908E1E6770B30066AC95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BFA909B1E6770C40066AC95</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6BFA90C61E677EA60066AC95</key>
 		<dict>
 			<key>primary</key>
 			<true/>
