@@ -11,6 +11,7 @@
 		6BD6EACD1E678AEA0090C3D9 /* Array+Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */; };
 		6BD6EACE1E678AEA0090C3D9 /* Array+Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */; };
 		6BD6EACF1E678AEA0090C3D9 /* Array+Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */; };
+		6BF0ABCC1E73687000467C87 /* Delivery.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 6BF0ABCB1E73687000467C87 /* Delivery.podspec */; };
 		6BFA90AC1E6771050066AC95 /* Delivery.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BFA90A61E6771050066AC95 /* Delivery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BFA90B11E67710D0066AC95 /* Delivery.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BFA90A61E6771050066AC95 /* Delivery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BFA90B21E67710D0066AC95 /* Delivery.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BFA90A61E6771050066AC95 /* Delivery.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Delivery.swift"; sourceTree = "<group>"; };
+		6BF0ABCB1E73687000467C87 /* Delivery.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Delivery.podspec; sourceTree = SOURCE_ROOT; };
 		6BFA90751E67709A0066AC95 /* Delivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Delivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFA90821E6770A80066AC95 /* Delivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Delivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFA908F1E6770B30066AC95 /* Delivery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Delivery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 		6BFA90A51E6771050066AC95 /* Supporting-Files */ = {
 			isa = PBXGroup;
 			children = (
+				6BF0ABCB1E73687000467C87 /* Delivery.podspec */,
 				6BFA90A61E6771050066AC95 /* Delivery.h */,
 				6BFA90A71E6771050066AC95 /* Info-iOS.plist */,
 				6BFA90D21E677EC90066AC95 /* Info-iOS-Tests.plist */,
@@ -350,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BF0ABCC1E73687000467C87 /* Delivery.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
