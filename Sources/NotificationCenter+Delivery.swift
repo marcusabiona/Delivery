@@ -25,6 +25,67 @@
 import Foundation
 
 public extension NotificationCenter {
+
+#if DECLARE_STATIC
+
+    /// Creates notification with a given name, sender and strongly typed object
+    /// and posts it to the receiver.
+    ///
+    /// - Parameters:
+    ///   - name: The name of the notification.
+    ///   - fromObject: The object posting notification.
+    ///   - withObject: The object will be passed with notification.
+    public static func post<T>(name: Notification.Name, from fromObject: Any? = nil, with withObject: T) {
+        NotificationCenter.default.post(name: name, object: fromObject, userInfo: ["\(T.self)": withObject])
+    }
+
+    /// Adds an observer to the receiver's dispatch table.
+    ///
+    /// - Parameters:
+    ///   - name: The name of notification.
+    ///   - type: Type of expected object in notification's `userInfo`.
+    ///   - object: The object whose notifications the observer wants to receive.
+    ///   - queue: The operation queue to which block should be added.
+    ///   - block: The block to be executed when the notification is received and object's type matches with expected one.
+    /// - Returns: An `ObservationToken`.
+    public static func subscribe<T>(
+        for name: Notification.Name,
+        _ type: T.Type,
+        from object: Any? = nil,
+        on queue: OperationQueue? = nil,
+        using block: @escaping (T) -> Void
+    ) -> ObservationToken {
+        let token = NotificationCenter.default.addObserver(forName: name, object: object, queue: queue) {
+            if let object = $0.userInfo?["\(T.self)"] as? T {
+                block(object)
+            }
+        }
+        return ObservationToken(token: token)
+    }
+
+    /// Adds an observer to the receiver's dispatch table.
+    ///
+    /// - Parameters:
+    ///   - name: The name of notification.
+    ///   - type: Type of expected object in notification's `userInfo`.
+    ///   - object: The object whose notifications the observer wants to receive.
+    ///   - queue: The operation queue to which block should be added.
+    ///   - block: The block to be executed with `Notification`'s `userInfo` when the notification is received.
+    /// - Returns: An `ObservationToken`.
+    public static func subscribe(
+        for name: Notification.Name,
+        from object: Any? = nil,
+        on queue: OperationQueue? = nil,
+        using block: @escaping ([AnyHashable: Any]?) -> Void
+    ) -> ObservationToken {
+        let token = NotificationCenter.default.addObserver(forName: name, object: object, queue: queue) {
+            block($0.userInfo)
+        }
+        return ObservationToken(token: token)
+    }
+
+
+#else
     
     /// Creates notification with a given name, sender and strongly typed object
     /// and posts it to the receiver.
@@ -81,4 +142,6 @@ public extension NotificationCenter {
         }
         return ObservationToken(token: token)
     }
+
+#endif
 }

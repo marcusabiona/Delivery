@@ -44,5 +44,6 @@ public class TokensBag {
     /// This method also will be invoked when tokens bag will be about to be deallocated.
     public func invalidate() {
         _tokens.invalidate()
+        _tokens.removeAll()
     }
 }
