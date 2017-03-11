@@ -1,5 +1,6 @@
 # Delivery
-- - - -
+---
+
 NotificationCenter wrapper for Swift.
 
 ### Features
@@ -7,7 +8,8 @@ NotificationCenter wrapper for Swift.
 * Automatical management of observers’ lifecycle
 
 ## Installation
-- - - -
+---
+
 ### Cocoapods
 
 Add to your Podfile:
@@ -30,7 +32,6 @@ end
 … to declare static methods in addition to instance ones.
 
 ### Carthage
-- - - -
 
 Add to your Cartfile:
 ```ruby
@@ -40,9 +41,10 @@ github "aleksei-z/Delivery" ~> 1.0
 NOTE: Unfortunately you cannot use static methods and Carthage.
 
 ## Usage
-- - - -
+---
 
 ### Base example
+
 ```swift
 // Story.swift
 struct Story {
@@ -78,6 +80,7 @@ NotificationCenter.default.post(name: .newStories, with: stories)
 ```
 
 ### Manual invalidation
+
 ```swift
 private var _token: ObservationToken?
 private let _bag = TokensBas()
@@ -93,11 +96,12 @@ _bag.invalidate()
 ```
 
 ### Built-in notifications
+
 ```swift
 NotificationCenter.default.subscribe(for: .UIKeyboardWillChangeFrame) { userInfo in
 }.add(to: _bag)
 ```
 
 ## License
-- - - -
+---
 [MIT](https://en.wikipedia.org/wiki/MIT_License)
