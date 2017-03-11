@@ -1,5 +1,4 @@
 # Delivery
----
 
 NotificationCenter wrapper for Swift.
 
@@ -8,7 +7,6 @@ NotificationCenter wrapper for Swift.
 * Automatical management of observers’ lifecycle
 
 ## Installation
----
 
 ### Cocoapods
 
@@ -41,7 +39,6 @@ github "aleksei-z/Delivery" ~> 1.0
 NOTE: Unfortunately you cannot use static methods and Carthage.
 
 ## Usage
----
 
 ### Base example
 
@@ -103,5 +100,5 @@ NotificationCenter.default.subscribe(for: .UIKeyboardWillChangeFrame) { userInfo
 ```
 
 ## License
----
+
 [MIT](https://en.wikipedia.org/wiki/MIT_License)
