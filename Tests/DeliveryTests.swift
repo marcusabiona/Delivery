@@ -34,26 +34,101 @@ class DeliveryTests: XCTestCase {
         _bag.invalidate()
     }
 
-    func testNotificationsReceiving() {
-        
+    func testGenericNotificationsReceiving() {
+
+        var receivedUser: User!
+        var receivedInt: Int!
+        var voidReceived = false
+
         NotificationCenter.default.subscribe(for: .testing, User.self) {
-            XCTAssertEqual($0.name, "Beast")
-            XCTAssertEqual($0.age, 666)
+            receivedUser = $0
         }.add(to: _bag)
 
         NotificationCenter.default.subscribe(for: .testing, Int.self) {
-            XCTAssertEqual($0, 10)
+            receivedInt = $0
+        }.add(to: _bag)
+
+        NotificationCenter.default.subscribe(for: .testing, Void.self) {
+            voidReceived = true
         }.add(to: _bag)
 
         NotificationCenter.default.post(name: .testing, with: User(name: "Beast", age: 666))
         NotificationCenter.default.post(name: .testing, with: 10)
+        NotificationCenter.default.post(name: .testing, with: ())
+
+        XCTAssertEqual(receivedUser.name, "Beast", "User's name is not equal to Beast.")
+        XCTAssertEqual(receivedUser.age, 666, "User's age is not equal to 666.")
+        XCTAssertEqual(receivedInt, 10, "Int is not equal to 10.")
+        XCTAssertTrue(voidReceived, "Void notification has not been received.")
+    }
+
+    func testUserInfo() {
+
+        var userInfo: [AnyHashable: Any]?
+
+        NotificationCenter.default.subscribe(for: .testing) {
+            userInfo = $0
+            }.add(to: _bag)
+
+        NotificationCenter.default.post(
+            name: .testing,
+            object: nil,
+            userInfo: [
+                "name": "Beast",
+                "age": 666
+            ]
+        )
+
+        XCTAssertEqual((userInfo?["name"] as? String) ?? "", "Beast")
+        XCTAssertEqual((userInfo?["age"] as? Int) ?? 0, 666)
     }
 
     func testTokenInvalidation() {
-        let token = NotificationCenter.default.subscribe(for: .testing, Int.self) { _ in
-            XCTFail("You shouldn't be here!")
+
+        let nonOptToken: ObservationToken
+        var optToken: ObservationToken?
+
+        var intReceived = false
+        var voidReceived = false
+
+        nonOptToken = NotificationCenter.default.subscribe(for: .testing, Int.self) { _ in
+            intReceived = true
         }
-        token.invalidate()
+
+        optToken = NotificationCenter.default.subscribe(for: .testing, Void.self) {
+            voidReceived = true
+        }
+
+        _ = optToken // To supress warning
+        nonOptToken.invalidate()
+        optToken = nil
+
         NotificationCenter.default.post(name: .testing, with: 10)
+        NotificationCenter.default.post(name: .testing, with: ())
+
+        XCTAssertFalse(intReceived, "Int notification shouldn't be received.")
+        XCTAssertFalse(voidReceived, "Void notification shouldn't be received.")
+    }
+
+    func testTokensBagInvalidation() {
+
+        var intReceived = false
+        var voidReceived = false
+
+        NotificationCenter.default.subscribe(for: .testing, Int.self) { _ in
+            intReceived = true
+        }.add(to: _bag)
+
+        NotificationCenter.default.subscribe(for: .testing, Void.self) {
+            voidReceived = true
+        }.add(to: _bag)
+
+        _bag.invalidate()
+
+        NotificationCenter.default.post(name: .testing, with: 10)
+        NotificationCenter.default.post(name: .testing, with: ())
+
+        XCTAssertFalse(intReceived, "Int notification shouldn't be received")
+        XCTAssertFalse(voidReceived, "Void notification shouldn't be received")
     }
 }
