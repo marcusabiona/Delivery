@@ -39,6 +39,17 @@ public extension NotificationCenter {
         NotificationCenter.default.post(name: name, object: fromObject, userInfo: ["\(T.self)": withObject])
     }
 
+    /// Creates a notification with a given name, sender, and information and posts it to the receiver.
+    ///
+    /// - Parameters:
+    ///   - name: The name of the notification.
+    ///   - object: The object posting the notification.
+    ///   - userInfo: Information about the the notification. May be nil.
+    public static func post(name: Notification.Name, object: Any? = nil, userInfo: [AnyHashable: Any]? = nil) {
+        NotificationCenter.default.post(name: name, object: object, userInfo: userInfo)
+    }
+
+
     /// Adds an observer to the receiver's dispatch table.
     ///
     /// - Parameters:
@@ -85,8 +96,8 @@ public extension NotificationCenter {
     }
 
 
-#else
-    
+#endif
+
     /// Creates notification with a given name, sender and strongly typed object
     /// and posts it to the receiver.
     ///
@@ -142,6 +153,4 @@ public extension NotificationCenter {
         }
         return ObservationToken(token: token)
     }
-
-#endif
 }
