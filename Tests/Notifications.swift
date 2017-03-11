@@ -1,5 +1,5 @@
 //
-//  DeliveryTests.swift
+//  Notifications.swift
 //
 //  Copyright (c) 2016 Aleksei Zaikin
 //
@@ -22,38 +22,8 @@
 //  THE SOFTWARE.
 //
 
-@testable import Delivery
-import XCTest
+import Foundation
 
-class DeliveryTests: XCTestCase {
-
-    private var _bag = TokensBag()
-
-    override func tearDown() {
-        super.tearDown()
-        _bag.invalidate()
-    }
-
-    func testNotificationsReceiving() {
-        
-        NotificationCenter.default.subscribe(for: .testing, User.self) {
-            XCTAssertEqual($0.name, "Beast")
-            XCTAssertEqual($0.age, 666)
-        }.add(to: _bag)
-
-        NotificationCenter.default.subscribe(for: .testing, Int.self) {
-            XCTAssertEqual($0, 10)
-        }.add(to: _bag)
-
-        NotificationCenter.default.post(name: .testing, with: User(name: "Beast", age: 666))
-        NotificationCenter.default.post(name: .testing, with: 10)
-    }
-
-    func testTokenInvalidation() {
-        let token = NotificationCenter.default.subscribe(for: .testing, Int.self) { _ in
-            XCTFail("You shouldn't be here!")
-        }
-        token.invalidate()
-        NotificationCenter.default.post(name: .testing, with: 10)
-    }
+extension Notification.Name {
+    static let testing = Notification.Name("NewUserNotification")
 }
