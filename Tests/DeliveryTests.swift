@@ -38,6 +38,8 @@ class DeliveryTests: XCTestCase {
 
         var receivedUser: User!
         var receivedInt: Int!
+        var receivedArray: [Int] = []
+        var receivedDict: [String: Int] = [:]
         var voidReceived = false
 
         NotificationCenter.default.subscribe(for: .testing, User.self) {
@@ -48,17 +50,29 @@ class DeliveryTests: XCTestCase {
             receivedInt = $0
         }.add(to: _bag)
 
+        NotificationCenter.default.subscribe(for: .testing, [Int].self) {
+            receivedArray = $0
+        }.add(to: _bag)
+
         NotificationCenter.default.subscribe(for: .testing, Void.self) {
             voidReceived = true
         }.add(to: _bag)
 
+        NotificationCenter.default.subscribe(for: .testing, [String: Int].self) {
+            receivedDict = $0
+        }.add(to: _bag)
+
         NotificationCenter.default.post(name: .testing, with: User(name: "Beast", age: 666))
         NotificationCenter.default.post(name: .testing, with: 10)
+        NotificationCenter.default.post(name: .testing, with: [1, 2, 3, 4, 5])
+        NotificationCenter.default.post(name: .testing, with: ["1": 2, "3": 4])
         NotificationCenter.default.post(name: .testing, with: ())
 
         XCTAssertEqual(receivedUser.name, "Beast", "User's name is not equal to Beast.")
         XCTAssertEqual(receivedUser.age, 666, "User's age is not equal to 666.")
         XCTAssertEqual(receivedInt, 10, "Int is not equal to 10.")
+        XCTAssertEqual(receivedArray, [1, 2, 3, 4, 5], "Arrays are not q=equal")
+        XCTAssertEqual(receivedDict, ["1": 2, "3": 4], "Dicts are not equal")
         XCTAssertTrue(voidReceived, "Void notification has not been received.")
     }
 

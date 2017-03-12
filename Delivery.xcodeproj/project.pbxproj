@@ -45,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		6BCBC5701E74AF8700CE6ED2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		6BCBC5721E74C6D600CE6ED2 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Delivery.swift"; sourceTree = "<group>"; };
 		6BF0ABCB1E73687000467C87 /* Delivery.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Delivery.podspec; sourceTree = SOURCE_ROOT; };
 		6BF0ABCD1E737CD500467C87 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
@@ -142,6 +143,7 @@
 		6BFA90A51E6771050066AC95 /* Supporting-Files */ = {
 			isa = PBXGroup;
 			children = (
+				6BCBC5721E74C6D600CE6ED2 /* Package.swift */,
 				6BCBC5701E74AF8700CE6ED2 /* README.md */,
 				6BF0ABCB1E73687000467C87 /* Delivery.podspec */,
 				6BFA90A61E6771050066AC95 /* Delivery.h */,
