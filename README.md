@@ -3,7 +3,7 @@
 NotificationCenter wrapper for Swift.
 
 ### Features
-* Generic subscribtions for notifications
+* Strongly typed subscribtions for notifications
 * Automatical management of observers’ lifecycle
 
 ## Installation
@@ -15,28 +15,12 @@ Add to your Podfile:
 pod 'Delivery', '~> 1.0'
 ```
 
-You can add following lines to your Podfile…
-```ruby
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      if target.name == 'Delivery' 
-        config.build_settings['SWIFT_ACTIVE_COMPILATION_CONDITIONS'] ||= ['DECLARE_STATIC']
-      end
-    end
-  end
-end
-```
-… to declare static methods in addition to instance ones.
-
 ### Carthage
 
 Add to your Cartfile:
 ```ruby
 github "aleksei-z/Delivery" ~> 1.0
 ```
-
-NOTE: Unfortunately you cannot use static methods and Carthage.
 
 ## Usage
 
@@ -95,8 +79,23 @@ _bag.invalidate()
 ### Built-in notifications
 
 ```swift
-NotificationCenter.default.subscribe(for: .UIKeyboardWillChangeFrame) { userInfo in
+NotificationCenter.default.subscribe(for: .UIApplicationSignificantTimeChange) { userInfo in
 }.add(to: _bag)
+```
+
+### Keyboard notifications
+
+```swift
+NotificationCenter.default.subscribeForKeyboardWillShowNotification { note in
+}
+NotificationCenter.default.subscribeForKeyboardDidShowNotification { note in
+}
+NotificationCenter.default.subscribeForKeyboardWillHideNotification { note in
+}
+NotificationCenter.default.subscribeForKeyboardDidHideNotification { note in
+}
+NotificationCenter.default.subscribeForKeyboardWillChangeFrameNotification { note in
+}
 ```
 
 ## License

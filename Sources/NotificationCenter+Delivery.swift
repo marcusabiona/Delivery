@@ -22,81 +22,11 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
+#if os(iOS)
+import UIKit
+#endif
 
 public extension NotificationCenter {
-
-#if DECLARE_STATIC
-
-    /// Creates notification with a given name, sender and strongly typed object
-    /// and posts it to the receiver.
-    ///
-    /// - Parameters:
-    ///   - name: The name of the notification.
-    ///   - fromObject: The object posting notification.
-    ///   - withObject: The object will be passed with notification.
-    public static func post<T>(name: Notification.Name, from fromObject: Any? = nil, with withObject: T) {
-        NotificationCenter.default.post(name: name, object: fromObject, userInfo: ["\(T.self)": withObject])
-    }
-
-    /// Creates a notification with a given name, sender, and information and posts it to the receiver.
-    ///
-    /// - Parameters:
-    ///   - name: The name of the notification.
-    ///   - object: The object posting the notification.
-    ///   - userInfo: Information about the the notification. May be nil.
-    public static func post(name: Notification.Name, object: Any? = nil, userInfo: [AnyHashable: Any]? = nil) {
-        NotificationCenter.default.post(name: name, object: object, userInfo: userInfo)
-    }
-
-
-    /// Adds an observer to the receiver's dispatch table.
-    ///
-    /// - Parameters:
-    ///   - name: The name of notification.
-    ///   - type: Type of expected object in notification's `userInfo`.
-    ///   - object: The object whose notifications the observer wants to receive.
-    ///   - queue: The operation queue to which block should be added.
-    ///   - block: The block to be executed when the notification is received and object's type matches with expected one.
-    /// - Returns: An `ObservationToken`.
-    public static func subscribe<T>(
-        for name: Notification.Name,
-        _ type: T.Type,
-        from object: Any? = nil,
-        on queue: OperationQueue? = nil,
-        using block: @escaping (T) -> Void
-    ) -> ObservationToken {
-        let token = NotificationCenter.default.addObserver(forName: name, object: object, queue: queue) {
-            if let object = $0.userInfo?["\(T.self)"] as? T {
-                block(object)
-            }
-        }
-        return ObservationToken(token: token)
-    }
-
-    /// Adds an observer to the receiver's dispatch table.
-    ///
-    /// - Parameters:
-    ///   - name: The name of notification.
-    ///   - type: Type of expected object in notification's `userInfo`.
-    ///   - object: The object whose notifications the observer wants to receive.
-    ///   - queue: The operation queue to which block should be added.
-    ///   - block: The block to be executed with `Notification`'s `userInfo` when the notification is received.
-    /// - Returns: An `ObservationToken`.
-    public static func subscribe(
-        for name: Notification.Name,
-        from object: Any? = nil,
-        on queue: OperationQueue? = nil,
-        using block: @escaping ([AnyHashable: Any]?) -> Void
-    ) -> ObservationToken {
-        let token = NotificationCenter.default.addObserver(forName: name, object: object, queue: queue) {
-            block($0.userInfo)
-        }
-        return ObservationToken(token: token)
-    }
-
-
-#endif
 
     /// Creates notification with a given name, sender and strongly typed object
     /// and posts it to the receiver.
@@ -153,4 +83,98 @@ public extension NotificationCenter {
         }
         return ObservationToken(token: token)
     }
+
+#if os(iOS)
+
+    /// Adds an observer to the receiver's dispatch table for Notification.Name.UIKeyboardWillShow.
+    ///
+    /// - Parameters:
+    ///   - object: The object whose notifications the observer wants to receive.
+    ///   - queue: The operation queue to which block should be added.
+    ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
+    /// - Returns: An `ObservationToken`.
+    public func subscribeForKeyboardWillShowNotification(
+        from object: Any? = nil,
+        on queue: OperationQueue? = nil,
+        using block: @escaping (KeyboardNotification) -> Void
+    ) -> ObservationToken {
+        let token = addObserver(forName: .UIKeyboardWillShow, object: object, queue: queue) {
+            block(KeyboardNotification(note: $0))
+        }
+        return ObservationToken(token: token)
+    }
+
+    /// Adds an observer to the receiver's dispatch table for Notification.Name.UIKeyboardDidShow.
+    ///
+    /// - Parameters:
+    ///   - object: The object whose notifications the observer wants to receive.
+    ///   - queue: The operation queue to which block should be added.
+    ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
+    /// - Returns: An `ObservationToken`.
+    public func subscribeForKeyboardDidShowNotification(
+        from object: Any? = nil,
+        on queue: OperationQueue? = nil,
+        using block: @escaping (KeyboardNotification) -> Void
+    ) -> ObservationToken {
+        let token = addObserver(forName: .UIKeyboardDidShow, object: object, queue: queue) {
+            block(KeyboardNotification(note: $0))
+        }
+        return ObservationToken(token: token)
+    }
+
+    /// Adds an observer to the receiver's dispatch table for Notification.Name.UIKeyboardWillHide.
+    ///
+    /// - Parameters:
+    ///   - object: The object whose notifications the observer wants to receive.
+    ///   - queue: The operation queue to which block should be added.
+    ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
+    /// - Returns: An `ObservationToken`.
+    public func subscribeForKeyboardWillHideNotification(
+        from object: Any? = nil,
+        on queue: OperationQueue? = nil,
+        using block: @escaping (KeyboardNotification) -> Void
+    ) -> ObservationToken {
+        let token = addObserver(forName: .UIKeyboardWillHide, object: object, queue: queue) {
+            block(KeyboardNotification(note: $0))
+        }
+        return ObservationToken(token: token)
+    }
+
+    /// Adds an observer to the receiver's dispatch table for Notification.Name.UIKeyboardDidHide.
+    ///
+    /// - Parameters:
+    ///   - object: The object whose notifications the observer wants to receive.
+    ///   - queue: The operation queue to which block should be added.
+    ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
+    /// - Returns: An `ObservationToken`.
+    public func subscribeForKeyboardDidHideNotification(
+        from object: Any? = nil,
+        on queue: OperationQueue? = nil,
+        using block: @escaping (KeyboardNotification) -> Void
+    ) -> ObservationToken {
+        let token = addObserver(forName: .UIKeyboardDidHide, object: object, queue: queue) {
+            block(KeyboardNotification(note: $0))
+        }
+        return ObservationToken(token: token)
+    }
+
+    /// Adds an observer to the receiver's dispatch table for Notification.Name.UIKeyboardWillChangeFrame.
+    ///
+    /// - Parameters:
+    ///   - object: The object whose notifications the observer wants to receive.
+    ///   - queue: The operation queue to which block should be added.
+    ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
+    /// - Returns: An `ObservationToken`.
+    public func subscribeForKeyboardWillChangeFrameNotification(
+        from object: Any? = nil,
+        on queue: OperationQueue? = nil,
+        using block: @escaping (KeyboardNotification) -> Void
+    ) -> ObservationToken {
+        let token = addObserver(forName: .UIKeyboardWillChangeFrame, object: object, queue: queue) {
+            block(KeyboardNotification(note: $0))
+        }
+        return ObservationToken(token: token)
+    }
+
+#endif
 }

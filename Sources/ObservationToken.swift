@@ -22,8 +22,6 @@
 //  THE SOFTWARE.
 //
 
-import Foundation
-
 /// Token that used to identify observer in notification center.
 /// Returned by notification center.
 public class ObservationToken: NSObject {
