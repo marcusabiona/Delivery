@@ -93,7 +93,7 @@ public extension NotificationCenter {
     ///   - queue: The operation queue to which block should be added.
     ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
     /// - Returns: An `ObservationToken`.
-    public func subscribeForKeyboardWillShowNotification(
+    public func subscribeForKeyboardWillShow(
         from object: Any? = nil,
         on queue: OperationQueue? = nil,
         using block: @escaping (KeyboardNotification) -> Void
@@ -111,7 +111,7 @@ public extension NotificationCenter {
     ///   - queue: The operation queue to which block should be added.
     ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
     /// - Returns: An `ObservationToken`.
-    public func subscribeForKeyboardDidShowNotification(
+    public func subscribeForKeyboardDidShow(
         from object: Any? = nil,
         on queue: OperationQueue? = nil,
         using block: @escaping (KeyboardNotification) -> Void
@@ -129,7 +129,7 @@ public extension NotificationCenter {
     ///   - queue: The operation queue to which block should be added.
     ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
     /// - Returns: An `ObservationToken`.
-    public func subscribeForKeyboardWillHideNotification(
+    public func subscribeForKeyboardWillHide(
         from object: Any? = nil,
         on queue: OperationQueue? = nil,
         using block: @escaping (KeyboardNotification) -> Void
@@ -147,7 +147,7 @@ public extension NotificationCenter {
     ///   - queue: The operation queue to which block should be added.
     ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
     /// - Returns: An `ObservationToken`.
-    public func subscribeForKeyboardDidHideNotification(
+    public func subscribeForKeyboardDidHide(
         from object: Any? = nil,
         on queue: OperationQueue? = nil,
         using block: @escaping (KeyboardNotification) -> Void
@@ -165,7 +165,7 @@ public extension NotificationCenter {
     ///   - queue: The operation queue to which block should be added.
     ///   - block: The block to be executed with `KeyboardNotification` when the notification is received.
     /// - Returns: An `ObservationToken`.
-    public func subscribeForKeyboardWillChangeFrameNotification(
+    public func subscribeForKeyboardWillChangeFrame(
         from object: Any? = nil,
         on queue: OperationQueue? = nil,
         using block: @escaping (KeyboardNotification) -> Void

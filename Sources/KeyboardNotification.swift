@@ -6,6 +6,8 @@
 //  Copyright © 2017 Aleksei Zaikin. All rights reserved.
 //
 
+#if os(iOS)
+
 import UIKit
 
 /// Wrapper around `Notification` with keyboard information.
@@ -69,3 +71,5 @@ public struct KeyboardNotification {
         return view.convert(frameEnd, from: nil)
     }
 }
+
+#endif

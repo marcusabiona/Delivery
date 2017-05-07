@@ -86,15 +86,19 @@ NotificationCenter.default.subscribe(for: .UIApplicationSignificantTimeChange) {
 ### Keyboard notifications
 
 ```swift
-NotificationCenter.default.subscribeForKeyboardWillShowNotification { note in
+NotificationCenter.default.subscribeForKeyboardWillShow { note in
 }
-NotificationCenter.default.subscribeForKeyboardDidShowNotification { note in
+
+NotificationCenter.default.subscribeForKeyboardDidShow { note in
 }
-NotificationCenter.default.subscribeForKeyboardWillHideNotification { note in
+
+NotificationCenter.default.subscribeForKeyboardWillHide { note in
 }
-NotificationCenter.default.subscribeForKeyboardDidHideNotification { note in
+
+NotificationCenter.default.subscribeForKeyboardDidHide { note in
 }
-NotificationCenter.default.subscribeForKeyboardWillChangeFrameNotification { note in
+
+NotificationCenter.default.subscribeForKeyboardWillChangeFrame { note in
 }
 ```
 
