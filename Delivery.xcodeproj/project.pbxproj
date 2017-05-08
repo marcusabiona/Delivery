@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B4895661EBFE15800F5CC16 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4895651EBFE15800F5CC16 /* KeyboardNotification.swift */; };
-		6B4895681EBFEBC100F5CC16 /* NotificationCenter+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4895671EBFEBC100F5CC16 /* NotificationCenter+Keyboard.swift */; };
+		6B48956C1EBFED2100F5CC16 /* KeyboardNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48956A1EBFED2100F5CC16 /* KeyboardNotification.swift */; };
+		6B48956D1EBFED2100F5CC16 /* NotificationCenter+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B48956B1EBFED2100F5CC16 /* NotificationCenter+Keyboard.swift */; };
 		6BD6EACC1E678AEA0090C3D9 /* Array+Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */; };
 		6BD6EACD1E678AEA0090C3D9 /* Array+Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */; };
 		6BD6EACE1E678AEA0090C3D9 /* Array+Delivery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */; };
@@ -46,8 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B4895651EBFE15800F5CC16 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
-		6B4895671EBFEBC100F5CC16 /* NotificationCenter+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Keyboard.swift"; sourceTree = "<group>"; };
+		6B48956A1EBFED2100F5CC16 /* KeyboardNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardNotification.swift; sourceTree = "<group>"; };
+		6B48956B1EBFED2100F5CC16 /* NotificationCenter+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Keyboard.swift"; sourceTree = "<group>"; };
 		6BCBC5701E74AF8700CE6ED2 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		6BCBC5721E74C6D600CE6ED2 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = SOURCE_ROOT; };
 		6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Delivery.swift"; sourceTree = "<group>"; };
@@ -111,6 +111,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6B4895691EBFED2100F5CC16 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6B48956A1EBFED2100F5CC16 /* KeyboardNotification.swift */,
+				6B48956B1EBFED2100F5CC16 /* NotificationCenter+Keyboard.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		6BFA905B1E6770040066AC95 = {
 			isa = PBXGroup;
 			children = (
@@ -136,10 +145,9 @@
 		6BFA90A41E6771050066AC95 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				6B4895691EBFED2100F5CC16 /* iOS */,
 				6BD6EACB1E678AEA0090C3D9 /* Array+Delivery.swift */,
-				6B4895651EBFE15800F5CC16 /* KeyboardNotification.swift */,
 				6BFA90BE1E6778670066AC95 /* NotificationCenter+Delivery.swift */,
-				6B4895671EBFEBC100F5CC16 /* NotificationCenter+Keyboard.swift */,
 				6BFA90B41E67720C0066AC95 /* ObservationToken.swift */,
 				6BFA90B91E67759E0066AC95 /* TokensBag.swift */,
 			);
@@ -408,8 +416,8 @@
 			files = (
 				6BFA90BA1E67759E0066AC95 /* TokensBag.swift in Sources */,
 				6BD6EACC1E678AEA0090C3D9 /* Array+Delivery.swift in Sources */,
-				6B4895681EBFEBC100F5CC16 /* NotificationCenter+Keyboard.swift in Sources */,
-				6B4895661EBFE15800F5CC16 /* KeyboardNotification.swift in Sources */,
+				6B48956D1EBFED2100F5CC16 /* NotificationCenter+Keyboard.swift in Sources */,
+				6B48956C1EBFED2100F5CC16 /* KeyboardNotification.swift in Sources */,
 				6BFA90BF1E6778670066AC95 /* NotificationCenter+Delivery.swift in Sources */,
 				6BFA90B51E67720C0066AC95 /* ObservationToken.swift in Sources */,
 			);
